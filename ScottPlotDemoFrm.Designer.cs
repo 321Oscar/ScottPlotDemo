@@ -39,6 +39,9 @@
             // 
             // formsPlot1
             // 
+            this.formsPlot1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.formsPlot1.DisplayScale = 0F;
             this.formsPlot1.Location = new System.Drawing.Point(12, 55);
             this.formsPlot1.Name = "formsPlot1";
@@ -51,7 +54,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
+            this.button1.Text = "start";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
@@ -61,7 +64,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
+            this.button2.Text = "stop";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
@@ -71,29 +74,29 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
+            this.button3.Text = "add model";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // rbDataLogger
             // 
             this.rbDataLogger.AutoSize = true;
+            this.rbDataLogger.Checked = true;
             this.rbDataLogger.Location = new System.Drawing.Point(290, 24);
             this.rbDataLogger.Name = "rbDataLogger";
-            this.rbDataLogger.Size = new System.Drawing.Size(95, 16);
+            this.rbDataLogger.Size = new System.Drawing.Size(83, 16);
             this.rbDataLogger.TabIndex = 4;
             this.rbDataLogger.TabStop = true;
-            this.rbDataLogger.Text = "radioButton1";
+            this.rbDataLogger.Text = "DataLogger";
             this.rbDataLogger.UseVisualStyleBackColor = true;
             // 
             // rbDataStreamer
             // 
             this.rbDataStreamer.AutoSize = true;
-            this.rbDataStreamer.Location = new System.Drawing.Point(391, 27);
+            this.rbDataStreamer.Location = new System.Drawing.Point(385, 24);
             this.rbDataStreamer.Name = "rbDataStreamer";
             this.rbDataStreamer.Size = new System.Drawing.Size(95, 16);
             this.rbDataStreamer.TabIndex = 5;
-            this.rbDataStreamer.TabStop = true;
             this.rbDataStreamer.Text = "DataStreamer";
             this.rbDataStreamer.UseVisualStyleBackColor = true;
             // 
@@ -104,7 +107,6 @@
             this.rbDataStreamerXY.Name = "rbDataStreamerXY";
             this.rbDataStreamerXY.Size = new System.Drawing.Size(107, 16);
             this.rbDataStreamerXY.TabIndex = 6;
-            this.rbDataStreamerXY.TabStop = true;
             this.rbDataStreamerXY.Text = "DataStreamerXY";
             this.rbDataStreamerXY.UseVisualStyleBackColor = true;
             // 
