@@ -31,7 +31,7 @@ namespace ScottPlotDemo
         List<ScottPlot.Plot> plots;
         System.Windows.Forms.Timer UpdatePlotTimer = new System.Windows.Forms.Timer() { Interval = 50, Enabled = true };
         IList<TestModel> models;
-        private int lineType = 2;
+        private int lineType = 0;
 
         public ScottPlotDemoFrm()
         {
