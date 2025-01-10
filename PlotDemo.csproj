@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{714A535C-054F-477C-97C6-0CBC47F83BDD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ScottPlotDemo</RootNamespace>
-    <AssemblyName>ScottPlotDemo</AssemblyName>
+    <RootNamespace>PlotDemo</RootNamespace>
+    <AssemblyName>PlotDemo</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,6 +43,12 @@
     </Reference>
     <Reference Include="OpenTK.GLControl, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>packages\OpenTK.GLControl.3.1.0\lib\net20\OpenTK.GLControl.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot, Version=2.2.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
+      <HintPath>packages\OxyPlot.Core.2.2.0\lib\net462\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.WindowsForms, Version=2.2.0.0, Culture=neutral, PublicKeyToken=245eacd6b5d2d338, processorArchitecture=MSIL">
+      <HintPath>packages\OxyPlot.WindowsForms.2.2.0\lib\net462\OxyPlot.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="ScottPlot, Version=5.0.51.0, Culture=neutral, PublicKeyToken=86698dc10387c39e, processorArchitecture=MSIL">
       <HintPath>packages\ScottPlot.5.0.51\lib\net462\ScottPlot.dll</HintPath>
@@ -94,14 +100,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ScottPlotDemoFrm.cs">
+    <Compile Include="Demos\OxyPlotDemo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScottPlotDemoFrm.Designer.cs">
+    <Compile Include="Demos\OxyPlotDemo.Designer.cs">
+      <DependentUpon>OxyPlotDemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Demos\ScottPlotDemoFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Demos\ScottPlotDemoFrm.Designer.cs">
       <DependentUpon>ScottPlotDemoFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestModel.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Demos\OxyPlotDemo.resx">
+      <DependentUpon>OxyPlotDemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -110,8 +135,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ScottPlotDemoFrm.resx">
+    <EmbeddedResource Include="Demos\ScottPlotDemoFrm.resx">
       <DependentUpon>ScottPlotDemoFrm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="OpenTK.dll.config" />
@@ -141,10 +167,12 @@
     <Error Condition="!Exists('packages\SkiaSharp.NativeAssets.Win32.2.88.9\build\net462\SkiaSharp.NativeAssets.Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SkiaSharp.NativeAssets.Win32.2.88.9\build\net462\SkiaSharp.NativeAssets.Win32.targets'))" />
     <Error Condition="!Exists('packages\HarfBuzzSharp.NativeAssets.Linux.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.Linux.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\HarfBuzzSharp.NativeAssets.Linux.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.Linux.targets'))" />
     <Error Condition="!Exists('packages\SkiaSharp.NativeAssets.Linux.NoDependencies.2.88.9\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\SkiaSharp.NativeAssets.Linux.NoDependencies.2.88.9\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.NETFramework.ReferenceAssemblies.net472.1.0.2\build\Microsoft.NETFramework.ReferenceAssemblies.net472.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.NETFramework.ReferenceAssemblies.net472.1.0.2\build\Microsoft.NETFramework.ReferenceAssemblies.net472.targets'))" />
   </Target>
   <Import Project="packages\HarfBuzzSharp.NativeAssets.Win32.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.Win32.targets" Condition="Exists('packages\HarfBuzzSharp.NativeAssets.Win32.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.Win32.targets')" />
   <Import Project="packages\SkiaSharp.NativeAssets.macOS.2.88.9\build\net462\SkiaSharp.NativeAssets.macOS.targets" Condition="Exists('packages\SkiaSharp.NativeAssets.macOS.2.88.9\build\net462\SkiaSharp.NativeAssets.macOS.targets')" />
   <Import Project="packages\SkiaSharp.NativeAssets.Win32.2.88.9\build\net462\SkiaSharp.NativeAssets.Win32.targets" Condition="Exists('packages\SkiaSharp.NativeAssets.Win32.2.88.9\build\net462\SkiaSharp.NativeAssets.Win32.targets')" />
   <Import Project="packages\HarfBuzzSharp.NativeAssets.Linux.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.Linux.targets" Condition="Exists('packages\HarfBuzzSharp.NativeAssets.Linux.7.3.0.3\build\net462\HarfBuzzSharp.NativeAssets.Linux.targets')" />
   <Import Project="packages\SkiaSharp.NativeAssets.Linux.NoDependencies.2.88.9\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets" Condition="Exists('packages\SkiaSharp.NativeAssets.Linux.NoDependencies.2.88.9\build\net462\SkiaSharp.NativeAssets.Linux.NoDependencies.targets')" />
+  <Import Project="packages\Microsoft.NETFramework.ReferenceAssemblies.net472.1.0.2\build\Microsoft.NETFramework.ReferenceAssemblies.net472.targets" Condition="Exists('packages\Microsoft.NETFramework.ReferenceAssemblies.net472.1.0.2\build\Microsoft.NETFramework.ReferenceAssemblies.net472.targets')" />
 </Project>

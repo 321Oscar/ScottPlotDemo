@@ -1,4 +1,4 @@
-﻿namespace ScottPlotDemo
+﻿namespace PlotDemo.Demos
 {
     partial class ScottPlotDemoFrm
     {
@@ -39,8 +39,8 @@
             // 
             // formsPlot1
             // 
-            this.formsPlot1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.formsPlot1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.formsPlot1.DisplayScale = 0F;
             this.formsPlot1.Location = new System.Drawing.Point(12, 55);

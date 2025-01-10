@@ -1,23 +1,21 @@
-using OxyPlot;
+﻿using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
+using PlotDemo.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static ScottPlotDemo.ScottPlotDemoFrm;
 
-public partial class OxyPlotDemoFrm : Form
+namespace PlotDemo.Demos
 {
+    public partial class OxyPlotDemoFrm : Form
+    {
         protected const double AxisPading = 0.95;
         public bool PositionTierEnable { get; set; }
-        IList<ScottPlotDemoFrm.TestModel> models;
+        IList<TestModel> models;
         System.Windows.Forms.Timer UpdatePlotTimer = new System.Windows.Forms.Timer() { Interval = 50, Enabled = true };
 
         public PlotModel PlotModel { get => plotView1.Model; }
@@ -30,6 +28,18 @@ public partial class OxyPlotDemoFrm : Form
         }
         private void OxyPlotDemoFrm_Load(object sender, EventArgs e)
         {
+            Button b = new Button()
+            {
+                Text = "start",
+                Name = "btnStart",
+
+            };
+            b.Size = new System.Drawing.Size(100, 20);
+            b.Location = new System.Drawing.Point(5, 5);
+            b.Click += this.Button1_Click;
+            this.Controls.Add(b);
+
+
             plotView1.Model = new PlotModel()
             {
                 Title = "实时数据",
@@ -132,7 +142,7 @@ public partial class OxyPlotDemoFrm : Form
             PlotModel.InvalidatePlot(true);
         }
 
-        void AddAxesToPlot(ScottPlotDemoFrm.TestModel signal, int index, int totalAxisCount)
+        void AddAxesToPlot(TestModel signal, int index, int totalAxisCount)
         {
             signal.Value = "0";
             var existAxes = GetAxisByKey(signal.ToString());
@@ -182,7 +192,7 @@ public partial class OxyPlotDemoFrm : Form
             return axis;
         }
 
-         /// <summary>
+        /// <summary>
         /// change color
         /// <para>TextColor;TicklineColor;TitleColor;MajorGridlineColor;MinorGridlineColor;AxislineColor
         /// </para>
@@ -208,7 +218,7 @@ public partial class OxyPlotDemoFrm : Form
         {
             var series = new LineSeries()
             {
-                
+
                 StrokeThickness = 1,
                 //MarkerSize = 3,
                 //MarkerStroke = OxyColors.DarkGreen,
@@ -255,7 +265,7 @@ public partial class OxyPlotDemoFrm : Form
             thread.Start();
         }
 
-         private void DataChangeLoop()
+        private void DataChangeLoop()
         {
             do
             {
@@ -281,4 +291,5 @@ public partial class OxyPlotDemoFrm : Form
             if (thread != null)
                 thread.Join();
         }
+    }
 }
