@@ -52,6 +52,7 @@
             this.ClientSize = new System.Drawing.Size(628, 427);
             this.Controls.Add(this.plotView1);
             this.Name = "OxyPlotDemoFrm";
+            this.Text = "OxyPlot RealTime Demo";
             this.ResumeLayout(false);
 
         }

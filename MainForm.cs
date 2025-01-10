@@ -17,6 +17,8 @@ namespace PlotDemo
             InitializeComponent();
 
             this.IsMdiContainer =true;
+
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void scottPlotToolStripMenuItem_Click(object sender, EventArgs e)

@@ -34,15 +34,24 @@ namespace PlotDemo.Demos
                 Name = "btnStart",
 
             };
-            b.Size = new System.Drawing.Size(100, 20);
+            b.Size = new System.Drawing.Size(100, 30);
             b.Location = new System.Drawing.Point(5, 5);
             b.Click += this.Button1_Click;
             this.Controls.Add(b);
+            Button stopbtn = new Button()
+            {
+                Text = "stop",
+                Name = "btnStop",
 
+            };
+            stopbtn.Size = new System.Drawing.Size(100, 30);
+            stopbtn.Location = new System.Drawing.Point(125, 5);
+            stopbtn.Click += this.Button2_Click;
+            this.Controls.Add(stopbtn);
 
             plotView1.Model = new PlotModel()
             {
-                Title = "实时数据",
+                Title = "RealTime",
                 IsLegendVisible = false,
                 //Background = OxyColors.Black,
                 //TextColor = OxyColors.White,
@@ -52,6 +61,8 @@ namespace PlotDemo.Demos
             plotView1.Model.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Bottom,
+                Title = "time",
+                Unit="s"
             });
 
             //var controller = new PlotController();
@@ -272,7 +283,7 @@ namespace PlotDemo.Demos
                 foreach (var model in models)
                 {
                     model.Value = (r.NextDouble() * 100).ToString("f2");
-                    model.TimeStamp = (DateTime.Now - startTime).TotalMilliseconds;
+                    model.TimeStamp = (DateTime.Now - startTime).TotalSeconds;
                 }
 
                 Thread.Sleep(10);
@@ -288,8 +299,7 @@ namespace PlotDemo.Demos
         void Stop()
         {
             dataChanging = false;
-            if (thread != null)
-                thread.Join();
+            thread?.Join();
         }
     }
 }
